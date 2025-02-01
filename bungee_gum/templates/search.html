@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="content-section">
+    <form action="{{ url_for('search_route') }}" method="POST">
+        {{ search_form.hidden_tag() }}
+        <fieldset class="search_form-group"></fieldset>
+            <legend class="">Search anything!</legend>
+            <div class="search_form-group">
+
+                {% if search_form.bar.errors %}
+                    {{ search_form.bar(class="search_form-control search_form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in search_form.bar.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ search_form.bar(class="search_form-control search_form-control-lg") }}
+                {% endif %}
+
+
+                <div class="update_form-group">
+                    {{ search_form.submit(class="btn btn-outline-info") }}
+                </div>
+            </div>
+</div>
+
+{% endblock %}
+

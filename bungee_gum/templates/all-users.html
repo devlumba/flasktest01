@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div class="content-section">
+    {% for user in all_users %}
+        <div class="content-section">
+            <img class="rounded-circle account-img img_hovered" src="{{ url_for('static', filename='profile-pics/' + user.image_file)}}">
+            <div class="media-body">
+                <a href="{{ url_for('specific_user', id=user.id) }}" class="h2 text-decoration-none account-heading">{{ user.username }}</a>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock body %}
+
+
+

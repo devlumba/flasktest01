@@ -1,0 +1,41 @@
+pip install flask-sqlalchemy
+
+from bungee_gum import app, db, Post, User
+
+app.app_context().push()
+db.create_all()
+
+user1 = User(username="user1", email="user1@demo.com", password="password")
+user2 = User(username="user2", email="user2@demo.com", password="password")
+
+
+with app.app_context():
+    db.create_all()
+    db.session.add(user1)
+    db.session.commit()
+
+
+12/13/2024 Friday
+
+that's it kinda for now
+
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt()
+
+OR from bungee_gum import bcrypt
+
+bcrypt.generate_password_hash("someString") = hash # e.g. "" b'$2b$12$4BOIzVEMIwg.W4U/B3fwDOxA62bI2afUn7aTOANREDUiaB1i9I0b2' ""
+bcrypt.generate_password_hash("someString").decode("utf-8") = string of hash # e.g. "" '$2b$12$Hu4U0qCF5POdw.W8S8rRPu674abOXyf5QBN7txxbaH6XIrxk/Y25a' ""
+
+
+bcrypt.check_password_hash(desired_password, "someStringYouCheckIfPasswordIsTheSameAs")
+
+I CREATED 2 USERS VIA WEBSITE
+
+with app.app_context():
+    user11 = User.query.filter_by(id=1).first()
+
+bcrypt.check_password_hash(user11.password, "admin")
+>>> True
+
+any validation methods built inside the form are checked automatically without me doing if validate... in routes...

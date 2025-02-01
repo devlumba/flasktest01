@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<form class="form-group" method="" action="/">
+    {{ form.csrf_token }}
+    {{ form.username.label }} {{ form.username() }}
+    {{ form.email.label }} {{ form.email() }}
+    <input type="submit" value="Go Johnny Go">
+</form>
+
+{% endblock body %}
+
+
+

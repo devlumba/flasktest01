@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="content-section">
+    <div class="media">
+        <img class="img_hovered rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + user.image_file)}}">
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            {% if current_user == user %}
+            <a href="{{ url_for('my_account') }}" class="btn btn-outline-info">Update</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<div class="content-section">
+    <h1>User's posts({{ posts_num }})</h1>
+    {% for post in posts %}
+            <div class="content-section">
+            <div class="media">
+                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none h2"><h1 class="account-heading"></h1>{{ post.title }}</a>
+                <hr> <br>
+                    <h1 class="text-secondary">{{ post.content }}</h1>
+                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none small h4">
+                        <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock body %}

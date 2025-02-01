@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+<div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + current_user.image_file)}}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ current_user.username }}</h2>
+      <p class="text-secondary">{{ current_user.email }}</p>
+    </div>
+  </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ update_form.hidden_tag() }}
+        <fieldset class="update_form-group">
+            <legend class="border-bottom mb-4">Wubba lubba dap dap (update yo data) </legend>
+            <div class="update_form-group">
+                {{ update_form.username.label(class="update_form-control-label") }}
+
+                {% if update_form.username.errors %}
+                    {{ update_form.username(class="update_form-control update_form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in update_form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ update_form.username(class="update_form-control update_form-control-lg") }}
+                {% endif %}
+
+
+            </div>
+            <div class="update_form-group">
+                {{ update_form.email.label(class="update_form-control-label") }}
+
+                {% if update_form.email.errors %}
+                    {{ update_form.email(class="update_form-control update_form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in update_form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ update_form.email(class="update_form-control update_form-control-lg") }}
+                {% endif %}
+            </div>
+
+             <div class="update_form-group">
+                {{ update_form.picture.label() }}
+                {{ update_form.picture(class="form-control-file") }}
+                {% if update_form.picture.errors %}
+                    {% for error in update_form.picture.errors %}
+                        <span class="text-danger">{{ error }}</span><br>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </fieldset>
+        <div class="update_form-group">
+            {{ update_form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock body %}

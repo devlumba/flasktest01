@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="content-section">
+    <div class="content-section">
+        <a href="{{ url_for('specific_user', id=post.author.id) }}"><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}"></a>
+        <h1 class="account-heading">{{ post.title }}</h1>
+        <br><hr>
+        <h2 class="text-secondary">{{ post.content }}</h2>
+        <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small>
+
+
+        <div>
+            <a href="{{ url_for('specific_user', id=post.author.id) }}" class="text-decoration-none h4">{{ post.author.username }}</a>
+            {% if current_user == post.author %}
+            {% endif %}
+        </div>
+
+        <div>
+            <a href="{{ url_for('post_modify', id=post.id) }}" class="btn btn-outline-info">Modify</a>
+            <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete the post?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <form action="{{ url_for('post_delete', id=post.id) }}" method="POST" >
+              <input type="submit" class="btn btn-outline-danger" value="Delete">
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock body %}
