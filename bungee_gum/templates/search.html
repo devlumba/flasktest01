@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="content-section">
-    <form action="{{ url_for('search_route') }}" method="POST">
+    <form action="{{ url_for('posts.search_route') }}" method="POST">
         {{ search_form.hidden_tag() }}
         <fieldset class="search_form-group"></fieldset>
             <legend class="">Search anything!</legend>

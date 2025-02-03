@@ -4,34 +4,34 @@
 <div class="content-section">
     <span class="h1">All Posts({{ posts_num }})</span>
     {% if posts.page != 1 %}
-        <a href="{{ url_for('all_posts_paginated', page=1) }}" class="text-decoration-none">1</a>
+        <a href="{{ url_for('posts.all_posts_paginated', page=1) }}" class="text-decoration-none">1</a>
     {% endif %}
     {% if posts.has_prev and posts.page != 2 %}
         ...
-        <a href="{{ url_for('all_posts_paginated', page=posts.page-1) }}" class="text-decoration-none">{{ posts.page - 1 }}</a>
+        <a href="{{ url_for('posts.all_posts_paginated', page=posts.page-1) }}" class="text-decoration-none">{{ posts.page - 1 }}</a>
     {% endif%}
 
-    <span href="{{ url_for('all_posts_paginated', page=posts.page) }}" class="text-decoration-none h6">{{ posts.page }}</span>
+    <span href="{{ url_for('posts.all_posts_paginated', page=posts.page) }}" class="text-decoration-none h6">{{ posts.page }}</span>
 
     {% if posts.has_next and posts.page != posts.pages - 1 %}
-        <a href="{{ url_for('all_posts_paginated', page=posts.page+1) }}" class="text-decoration-none">{{ posts.page + 1 }}</a>
+        <a href="{{ url_for('posts.all_posts_paginated', page=posts.page+1) }}" class="text-decoration-none">{{ posts.page + 1 }}</a>
         ...
     {% endif%}
     {% if posts.page != posts.pages %}
-        <a href="{{ url_for('all_posts_paginated', page=posts.pages) }}" class="text-decoration-none">{{ posts.pages }}</a>
+        <a href="{{ url_for('posts.all_posts_paginated', page=posts.pages) }}" class="text-decoration-none">{{ posts.pages }}</a>
     {% endif %}
     {% for post in posts.items %}
         <div class="content-section">
             <div class="media">
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
                     <h2 class="text-secondary">{{ post.content }}</h2>
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none small h4">
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>
             <div>
 
-                <a href="{{ url_for('specific_user', id=post.author.id) }}" class="text-decoration-none h4">
+                <a href="{{ url_for('users.specific_user', id=post.author.id) }}" class="text-decoration-none h4">
                     <img class="rounded-circle account-img-smol" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}">
                     {{ post.author.username }}</a>
             </div>
@@ -42,7 +42,7 @@
             {% if posts.page == page_num %}
                 <span class="text-decoration-none">{{ page_num }}</span>
             {% else %}
-                <a href="{{ url_for('all_posts_paginated', page=page_num) }}" class="text-decoration-none mt-5">{{ page_num }}</a>
+                <a href="{{ url_for('posts.all_posts_paginated', page=page_num) }}" class="text-decoration-none mt-5">{{ page_num }}</a>
 
             {% endif %}
             {% else %}

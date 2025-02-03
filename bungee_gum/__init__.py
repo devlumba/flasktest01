@@ -28,4 +28,10 @@ mail = Mail(app)
 
 # i need to restart my pc in order for variables to supposedly work
 
-from bungee_gum import routes
+from bungee_gum.main.routes import main
+app.register_blueprint(main)
+from bungee_gum.users.routes import users
+app.register_blueprint(users)
+from bungee_gum.posts.routes import posts
+app.register_blueprint(posts)
+

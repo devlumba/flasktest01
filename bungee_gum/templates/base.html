@@ -24,21 +24,21 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav mr-auto">
-          <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-          <a class="nav-item nav-link" href="{{ url_for('home') }}">About</a>
+          <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+          <a class="nav-item nav-link" href="{{ url_for('main.home') }}">About</a>
         </div>
         <!-- Navbar Right Side -->
         <div class="navbar-right">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{{ url_for('search_route') }}">Search</a>
+            <a class="nav-item nav-link" href="{{ url_for('posts.search_route') }}">Search</a>
           {% if current_user.is_authenticated %}
-            <a class="nav-item nav-link" href="{{ url_for('post_new') }}">New Post</a>
-            <a class="nav-item nav-link" href="{{ url_for('specific_user', id=current_user.id) }}">{{ current_user.username }}</a>
-            <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+            <a class="nav-item nav-link" href="{{ url_for('posts.post_new') }}">New Post</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.specific_user', id=current_user.id) }}">{{ current_user.username }}</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Logout</a>
           {% else %}
-            <a class="nav-item nav-link" href="{{ url_for('login_admin') }}">admin1</a>
-            <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
-            <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.login_admin') }}">admin1</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
+            <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
           {% endif %}
           </div>
         </div>
@@ -69,26 +69,26 @@
               <ul class="list-group">
                   {% if current_user.is_authenticated %}
                     <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('specific_user', id=current_user.id) }}">My Page</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('users.specific_user', id=current_user.id) }}">My Page</a>
                     </li>
                   {% endif %}
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('all_posts') }}">All Posts</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('posts.all_posts') }}">All Posts</a>
                  </li>
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('all_users') }}">All Users</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('users.all_users') }}">All Users</a>
                  </li>
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('post_ideas') }}">Ideas</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('posts.post_ideas') }}">Ideas</a>
                  </li>
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('post_programming') }}">Programming</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('posts.post_programming') }}">Programming</a>
                  </li>
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('post_accomplishments') }}">Accomplishments</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('posts.post_accomplishments') }}">Accomplishments</a>
                  </li>
                  <li class="list-group-item list-group-item-light">
-                    <a class="text-decoration-none h6" href="{{ url_for('all_posts_paginated') }}">All Posts Paginated</a>
+                    <a class="text-decoration-none h6" href="{{ url_for('posts.all_posts_paginated') }}">All Posts Paginated</a>
                  </li>
                  <li class="list-group-item list-group-item-light">etc</li>
               </ul>

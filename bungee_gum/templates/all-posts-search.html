@@ -8,15 +8,15 @@
     {% for post in posts_title %}
         <div class="content-section">
             <div class="media">
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
                     <h2 class="text-secondary">{{ post.content }}</h2>
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none small h4">
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>
             <div>
 
-                <a href="{{ url_for('specific_user', id=post.author.id) }}" class="text-decoration-none h4">
+                <a href="{{ url_for('users.specific_user', id=post.author.id) }}" class="text-decoration-none h4">
                     <img class="rounded-circle account-img-smol" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}">
                     {{ post.author.username }}</a>
             </div>
@@ -32,15 +32,15 @@
     {% for post in posts_content %}
         <div class="content-section">
             <div class="media">
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
                     <h2 class="text-secondary">{{ post.content }}</h2>
-                    <a href="{{ url_for('post_view', id=post.id) }}" class="text-decoration-none small h4">
+                    <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>
             <div>
 
-                <a href="{{ url_for('specific_user', id=post.author.id) }}" class="text-decoration-none h4">
+                <a href="{{ url_for('users.specific_user', id=post.author.id) }}" class="text-decoration-none h4">
                     <img class="rounded-circle account-img-smol" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}">
                     {{ post.author.username }}</a>
             </div>

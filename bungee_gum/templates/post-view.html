@@ -3,7 +3,7 @@
 
 <div class="content-section">
     <div class="content-section">
-        <a href="{{ url_for('specific_user', id=post.author.id) }}"><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}"></a>
+        <a href="{{ url_for('users.specific_user', id=post.author.id) }}"><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}"></a>
         <h1 class="account-heading">{{ post.title }}</h1>
         <br><hr>
         <h2 class="text-secondary">{{ post.content }}</h2>
@@ -11,13 +11,13 @@
 
 
         <div>
-            <a href="{{ url_for('specific_user', id=post.author.id) }}" class="text-decoration-none h4">{{ post.author.username }}</a>
+            <a href="{{ url_for('users.specific_user', id=post.author.id) }}" class="text-decoration-none h4">{{ post.author.username }}</a>
             {% if current_user == post.author %}
             {% endif %}
         </div>
 
         <div>
-            <a href="{{ url_for('post_modify', id=post.id) }}" class="btn btn-outline-info">Modify</a>
+            <a href="{{ url_for('posts.post_modify', id=post.id) }}" class="btn btn-outline-info">Modify</a>
             <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
         </div>
     </div>
@@ -38,7 +38,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <form action="{{ url_for('post_delete', id=post.id) }}" method="POST" >
+          <form action="{{ url_for('posts.post_delete', id=post.id) }}" method="POST" >
               <input type="submit" class="btn btn-outline-danger" value="Delete">
           </form>
       </div>
