@@ -1,4 +1,4 @@
-from bungee_gum import app, db, bcrypt, mail
+from bungee_gum import db, bcrypt, mail
 from bungee_gum.forms import (RegistrationForm, LoginForm, UpdateAccountForm, PostForm, SearchForm, RequestResetForm,
                               ResetPasswordForm)
 from flask import render_template, redirect, flash, url_for, request

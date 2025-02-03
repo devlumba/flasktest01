@@ -1,4 +1,5 @@
-from bungee_gum import db, login_manager, app
+from bungee_gum import db, login_manager
+from flask import current_app
 from datetime import datetime, timezone
 from flask_login import UserMixin
 from itsdangerous import Serializer
@@ -22,12 +23,12 @@ class User(db.Model, UserMixin):
     posts = db.relationship("Post", backref="author", lazy="subquery")
 
     def get_reset_token(self):
-        s = Serializer(app.config["SECRET_KEY"])
+        s = Serializer(current_app.config["SECRET_KEY"])
         return s.dumps(self.id)
 
     @staticmethod
     def verify_reset_token(token):
-        s = Serializer(app.config["SECRET_KEY"])
+        s = Serializer(current_app.config["SECRET_KEY"])
         try:
             user_id = s.loads(token)
         except:

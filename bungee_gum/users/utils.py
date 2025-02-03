@@ -1,5 +1,5 @@
-from bungee_gum import app, db, bcrypt, mail
-from flask import render_template, redirect, flash, url_for, request
+from bungee_gum import db, bcrypt, mail
+from flask import render_template, redirect, flash, url_for, request, current_app
 import secrets
 import os
 from PIL import Image
@@ -10,7 +10,7 @@ def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
-    picture_path = os.path.join(app.root_path, 'static/profile-pics', picture_fn)
+    picture_path = os.path.join(current_app.root_path, 'static/profile-pics', picture_fn)
 
     output_size = (450, 450)
     i = Image.open(form_picture)

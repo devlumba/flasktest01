@@ -1,5 +1,5 @@
 from flask import Blueprint
-from bungee_gum import app, db, bcrypt, mail
+from bungee_gum import db, bcrypt, mail
 from bungee_gum.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm,
                                     ResetPasswordForm)
 from flask import render_template, redirect, flash, url_for, request
@@ -156,3 +156,18 @@ def reset_token(token):
 
     return render_template("reset_token.html", title="Reset Password", reset_form=reset_form)
 
+
+@users.route("/user/<int:id>/delete", methods=["POST"])
+def user_delete(id):
+    user = User.query.get_or_404(id)
+    if current_user != user:
+        flash("You can't delete someone else's account!", "danger")
+        return redirect("main.home")
+
+    if current_user == user:
+        db.session.delete(user)
+        db.session.commit()
+        flash("Your account has been deleted", "info")
+        return redirect(url_for("main.home"))
+
+# not working, "method not allowed", probably because POST only. Should do with a button like post deletion.
