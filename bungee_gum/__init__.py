@@ -20,8 +20,8 @@ login_manager.login_message_category = "danger"
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 # tls is 587, ssl is 465
-app.config["MAIL_USER_TLS"] = False
-app.config["MAIL_USER_SSL"] = True
+app.config["MAIL_USE_TLS"] = False
+app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = "mygmail"
 app.config["MAIL_PASSWORD"] = "mycode"
 mail = Mail(app)

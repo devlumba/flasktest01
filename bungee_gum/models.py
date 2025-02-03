@@ -1,7 +1,7 @@
 from bungee_gum import db, login_manager, app
 from datetime import datetime, timezone
 from flask_login import UserMixin
-from itsdangerous import URLSafeTimedSerializer as Serializer
+from itsdangerous import Serializer
 
 
 @login_manager.user_loader
@@ -22,14 +22,14 @@ class User(db.Model, UserMixin):
     posts = db.relationship("Post", backref="author", lazy="subquery")
 
     def get_reset_token(self, expires_sec=300):
-        s = Serializer(app.config["SECRET_KEY"], "salty")
-        return s.dumps({'user_id': self.id})
+        s = Serializer(app.config["SECRET_KEY"])
+        return s.dumps(self.id)
 
     @staticmethod
     def verify_reset_token(token):
         s = Serializer(app.config["SECRET_KEY"])
         try:
-            user_id = s.loads(token)["user_id"]
+            user_id = s.loads(token)
         except:
             return None
         return User.query.get(user_id)
