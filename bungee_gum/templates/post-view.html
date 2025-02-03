@@ -6,7 +6,7 @@
         <a href="{{ url_for('users.specific_user', id=post.author.id) }}"><img class="rounded-circle account-img" src="{{ url_for('static', filename='profile-pics/' + post.author.image_file)}}"></a>
         <h1 class="account-heading">{{ post.title }}</h1>
         <br><hr>
-        <h2 class="text-secondary">{{ post.content }}</h2>
+        <pre class="h2 text-secondary">{{ post.content }}</pre>
         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small>
 
 

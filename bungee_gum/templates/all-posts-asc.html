@@ -9,7 +9,7 @@
             <div class="media">
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
-                    <h2 class="text-secondary">{{ post.content }}</h2>
+                    <pre class="h2 text-secondary">{{ post.content }}</pre>
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>

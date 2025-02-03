@@ -151,7 +151,7 @@ def search_result(searched_value:str):
         post_cont += 1
 
     return render_template("all-posts-search.html", posts_title=posts_title, posts_content=posts_content,
-                           post_title_num=post_tit, post_content_num=post_cont)
+                           post_title_num=post_tit, post_content_num=post_cont, searched_value=searched_value)
 
 
 @posts.route("/search_bar/", methods=["POST", "GET"])

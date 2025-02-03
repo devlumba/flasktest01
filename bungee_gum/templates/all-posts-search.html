@@ -4,13 +4,13 @@
 
 <div class="media">
     {% if posts_title %}
-    <span class="h1">Search in titles({{ post_title_num }})</span>
+    <span class="h1">Search for「{{ searched_value }}」in titles({{ post_title_num }})</span>
     {% for post in posts_title %}
         <div class="content-section">
             <div class="media">
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
-                    <h2 class="text-secondary">{{ post.content }}</h2>
+                    <pre class="h2 text-secondary">{{ post.content }}</pre>
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>
@@ -26,15 +26,17 @@
 {% endif %}
 </div>
     <br><br>
+    <br><br>
+    <br><br>
 
 {% if posts_content %}
-    <span class="h1">Search in content({{ post_content_num }})</span>
+    <span class="h1">Search for「{{ searched_value }}」in content({{ post_content_num }})</span>
     {% for post in posts_content %}
         <div class="content-section">
             <div class="media">
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none h1"><h1 class="account-heading"></h1>{{ post.title }}</a>
                 <hr> <br>
-                    <h2 class="text-secondary">{{ post.content }}</h2>
+                    <pre class="h2 text-secondary">{{ post.content }}</pre>
                     <a href="{{ url_for('posts.post_view', id=post.id) }}" class="text-decoration-none small h4">
                         <small class="mute">{{ post.date_posted.strftime('%m/%d/%Y, %H:%M:%S') }}</small></a>
             </div>

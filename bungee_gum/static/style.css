@@ -82,3 +82,10 @@ textarea {
     height: 20vh;
 }
 
+pre {
+    font-family: "Segoe UI", Arial, sans-serif;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+    overflow: hidden; /* to hide scrollbar scroll */
+}
+
