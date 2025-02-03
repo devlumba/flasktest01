@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship("Post", backref="author", lazy="subquery")
 
-    def get_reset_token(self, expires_sec=300):
+    def get_reset_token(self):
         s = Serializer(app.config["SECRET_KEY"])
         return s.dumps(self.id)
 
