@@ -33,5 +33,7 @@ def create_app(config_class=Config):
     app.register_blueprint(users)
     from bungee_gum.posts.routes import posts
     app.register_blueprint(posts)
+    from bungee_gum.errors.handlers import errors
+    app.register_blueprint(errors)
 
     return app

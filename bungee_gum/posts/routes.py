@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, abort
 from bungee_gum import db, bcrypt, mail
 from bungee_gum.posts.forms import (PostForm, SearchForm)
 from flask import render_template, redirect, flash, url_for, request
@@ -65,8 +65,7 @@ def post_modify(id):
             return redirect(url_for("posts.post_view", id=post.id))
         return render_template("post-modify.html", title=f"Modify '{post.title}'", post_form=post_form)
     else:
-        flash("You are not the author of the post!", "danger")
-        return redirect(url_for("posts.post_view", id=post.id))
+        abort(403)
 
 
 @posts.route("/post/<int:id>/delete", methods=["POST"])
