@@ -18,9 +18,12 @@ mail = Mail()
 # i need to restart my pc in order for variables to supposedly work
 
 
-def create_app(config_class=Config):
+def create_app(config_class=Config, database_uri="sqlite:///site.db", wtf_csrf=True):
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    app.config["SQLALCHEMY_DATABASE_URI"] = database_uri
+    app.config["WTF_CSRF_ENABLED"] = wtf_csrf
 
     db.init_app(app)
     bcrypt.init_app(app)
