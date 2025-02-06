@@ -7,7 +7,7 @@ from itsdangerous import Serializer
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get_or_404(int(user_id))
 
 
 # Query.filter_by() takes 1 positional argument but 2 were given
